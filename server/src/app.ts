@@ -9,9 +9,15 @@ app.use(express.json());
 
 const port = config.get<number>("port");
 
+//Middleware
+import morganMiddleware from "./middleware/morganMiddleware";
+
+app.use(morganMiddleware);
+
 //Config de rotas
 import router from "./routes/routes";
 app.use("/api/", router);
+
 
 //Logger
 import Logger from "../config/logger";
