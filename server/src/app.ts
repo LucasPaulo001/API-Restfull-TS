@@ -13,10 +13,13 @@ const port = config.get<number>("port");
 import router from "./routes/routes";
 app.use("/api/", router);
 
+//Logger
+import Logger from "../config/logger";
+
 //banco de dados
 import { dbConnection } from "../config/db";
 
 app.listen(port, async () => {
   await dbConnection();
-  console.log(`Aplicação rodando na porta ${port}!`);
+  Logger.info(`Aplicação rodando na porta ${port}!`);
 });
